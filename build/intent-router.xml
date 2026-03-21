@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1773929009">
+  <project timestamp="1773929009" name="Clover Coverage">
+    <package name="Romansh\LaravelCreemAgent\Agent">
+      <file name="/home/www/laravel-creem-agent/src/Agent/AgentManager.php">
+        <class name="Romansh\LaravelCreemAgent\Agent\AgentManager" namespace="Romansh\LaravelCreemAgent\Agent">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="10" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="18" type="method" name="handleMessage" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="24" type="method" name="getActiveStore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="29" type="method" name="setActiveStore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <metrics loc="34" ncloc="34" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="10" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Agent/CommandParser.php">
+        <class name="Romansh\LaravelCreemAgent\Agent\CommandParser" namespace="Romansh\LaravelCreemAgent\Agent">
+          <metrics complexity="13" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="27" coveredelements="0"/>
+        </class>
+        <line num="7" type="method" name="parse" visibility="public" complexity="13" crap="182" count="0"/>
+        <line num="9" type="stmt" count="0"/>
+        <line num="12" type="stmt" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <metrics loc="72" ncloc="61" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="27" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Agent/IntentRouter.php">
+        <class name="Romansh\LaravelCreemAgent\Agent\IntentRouter" namespace="Romansh\LaravelCreemAgent\Agent">
+          <metrics complexity="38" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="104" elements="118" coveredelements="115"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="19"/>
+        <line num="16" type="stmt" count="19"/>
+        <line num="19" type="method" name="route" visibility="public" complexity="12" crap="12" count="19"/>
+        <line num="21" type="stmt" count="19"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="25" type="stmt" count="4"/>
+        <line num="26" type="stmt" count="4"/>
+        <line num="27" type="stmt" count="3"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="19"/>
+        <line num="33" type="stmt" count="19"/>
+        <line num="36" type="method" name="switchStore" visibility="private" complexity="2" crap="2" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="41" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="49" type="method" name="querySubscriptions" visibility="private" complexity="3" crap="3" count="3"/>
+        <line num="52" type="stmt" count="3"/>
+        <line num="53" type="stmt" count="3"/>
+        <line num="54" type="stmt" count="3"/>
+        <line num="55" type="stmt" count="3"/>
+        <line num="57" type="stmt" count="3"/>
+        <line num="58" type="stmt" count="3"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="64" type="method" name="queryCustomers" visibility="private" complexity="2" crap="2" count="3"/>
+        <line num="67" type="stmt" count="3"/>
+        <line num="68" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="75" type="method" name="queryTransactions" visibility="private" complexity="4" crap="4" count="4"/>
+        <line num="78" type="stmt" count="4"/>
+        <line num="79" type="stmt" count="3"/>
+        <line num="81" type="stmt" count="3"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="3"/>
+        <line num="86" type="stmt" count="3"/>
+        <line num="87" type="stmt" count="3"/>
+        <line num="88" type="stmt" count="3"/>
+        <line num="89" type="stmt" count="3"/>
+        <line num="90" type="stmt" count="3"/>
+        <line num="92" type="stmt" count="3"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="98" type="method" name="queryProducts" visibility="private" complexity="4" crap="4" count="4"/>
+        <line num="101" type="stmt" count="4"/>
+        <line num="102" type="stmt" count="3"/>
+        <line num="104" type="stmt" count="3"/>
+        <line num="105" type="stmt" count="1"/>
+        <line num="108" type="stmt" count="3"/>
+        <line num="109" type="stmt" count="3"/>
+        <line num="110" type="stmt" count="3"/>
+        <line num="111" type="stmt" count="3"/>
+        <line num="112" type="stmt" count="3"/>
+        <line num="114" type="stmt" count="3"/>
+        <line num="115" type="stmt" count="1"/>
+        <line num="116" type="stmt" count="1"/>
+        <line num="120" type="method" name="status" visibility="private" complexity="1" crap="1" count="3"/>
+        <line num="122" type="stmt" count="3"/>
+        <line num="123" type="stmt" count="3"/>
+        <line num="125" type="stmt" count="3"/>
+        <line num="126" type="stmt" count="3"/>
+        <line num="128" type="stmt" count="3"/>
+        <line num="129" type="stmt" count="3"/>
+        <line num="130" type="stmt" count="3"/>
+        <line num="131" type="stmt" count="3"/>
+        <line num="132" type="stmt" count="3"/>
+        <line num="133" type="stmt" count="3"/>
+        <line num="134" type="stmt" count="3"/>
+        <line num="135" type="stmt" count="3"/>
+        <line num="136" type="stmt" count="3"/>
+        <line num="137" type="stmt" count="3"/>
+        <line num="139" type="stmt" count="3"/>
+        <line num="142" type="method" name="runHeartbeat" visibility="private" complexity="4" crap="4.10" count="1"/>
+        <line num="145" type="stmt" count="1"/>
+        <line num="146" type="stmt" count="1"/>
+        <line num="148" type="stmt" count="1"/>
+        <line num="149" type="stmt" count="1"/>
+        <line num="152" type="stmt" count="1"/>
+        <line num="153" type="stmt" count="1"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="157" type="stmt" count="1"/>
+        <line num="158" type="stmt" count="1"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="164" type="method" name="cancelSubscription" visibility="private" complexity="2" crap="2" count="1"/>
+        <line num="167" type="stmt" count="1"/>
+        <line num="168" type="stmt" count="1"/>
+        <line num="169" type="stmt" count="1"/>
+        <line num="170" type="stmt" count="1"/>
+        <line num="174" type="method" name="createCheckout" visibility="private" complexity="2" crap="2" count="1"/>
+        <line num="177" type="stmt" count="1"/>
+        <line num="178" type="stmt" count="1"/>
+        <line num="179" type="stmt" count="1"/>
+        <line num="180" type="stmt" count="1"/>
+        <line num="181" type="stmt" count="1"/>
+        <line num="185" type="method" name="help" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="187" type="stmt" count="1"/>
+        <line num="188" type="stmt" count="1"/>
+        <line num="189" type="stmt" count="1"/>
+        <line num="190" type="stmt" count="1"/>
+        <line num="191" type="stmt" count="1"/>
+        <line num="192" type="stmt" count="1"/>
+        <line num="193" type="stmt" count="1"/>
+        <line num="194" type="stmt" count="1"/>
+        <line num="195" type="stmt" count="1"/>
+        <line num="196" type="stmt" count="1"/>
+        <line num="197" type="stmt" count="1"/>
+        <line num="198" type="stmt" count="1"/>
+        <line num="199" type="stmt" count="1"/>
+        <metrics loc="202" ncloc="202" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="104" elements="118" coveredelements="115"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Cli">
+      <file name="/home/www/laravel-creem-agent/src/Cli/ArtisanCliDriver.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\ArtisanCliDriver" namespace="Romansh\LaravelCreemAgent\Cli">
+          <metrics complexity="37" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="0" elements="66" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="execute" visibility="public" complexity="8" crap="72" count="0"/>
+        <line num="11" type="stmt" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="24" type="method" name="handleTransactions" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="39" type="method" name="handleSubscriptions" visibility="private" complexity="7" crap="56" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="56" type="method" name="handleCustomers" visibility="private" complexity="6" crap="42" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="70" type="method" name="handleProducts" visibility="private" complexity="5" crap="30" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="82" type="method" name="handleCheckouts" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="93" type="method" name="handleDiscounts" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <metrics loc="103" ncloc="103" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="0" elements="66" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Cli/CreemCliManager.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\CreemCliManager" namespace="Romansh\LaravelCreemAgent\Cli">
+          <metrics complexity="27" methods="16" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="1" elements="64" coveredelements="2"/>
+        </class>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="26" type="method" name="isNativeCliAvailable" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="46" type="method" name="invalidateCliCache" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="52" type="method" name="getDriver" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="65" type="method" name="setActiveStore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="70" type="method" name="getActiveStore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="75" type="method" name="getProfileForStore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="81" type="method" name="execute" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="98" type="method" name="transactions" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="103" type="method" name="subscriptions" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="108" type="method" name="customers" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="113" type="method" name="products" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="118" type="method" name="detectNativeCli" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <line num="128" type="stmt" count="0"/>
+        <line num="129" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="136" type="method" name="makeNativeDriver" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="141" type="method" name="makeArtisanDriver" visibility="private" complexity="1" crap="2" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="146" type="method" name="isUsingNativeDriver" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <metrics loc="152" ncloc="150" classes="1" methods="16" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="1" elements="64" coveredelements="2"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Cli/NativeCliDriver.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\NativeCliDriver" namespace="Romansh\LaravelCreemAgent\Cli">
+          <metrics complexity="7" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="22" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="execute" visibility="public" complexity="7" crap="56" count="0"/>
+        <line num="11" type="stmt" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <metrics loc="46" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="22" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="/home/www/laravel-creem-agent/src/Cli/CliDriverInterface.php">
+      <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="Romansh\LaravelCreemAgent\Cli\Proxies">
+      <file name="/home/www/laravel-creem-agent/src/Cli/Proxies/CustomerProxy.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\Proxies\CustomerProxy" namespace="Romansh\LaravelCreemAgent\Cli\Proxies">
+          <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="11" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="16" type="method" name="find" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="method" name="findByEmail" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="method" name="billingPortal" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="31" ncloc="31" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Cli/Proxies/ProductProxy.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\Proxies\ProductProxy" namespace="Romansh\LaravelCreemAgent\Cli\Proxies">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="11" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="16" type="method" name="find" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="method" name="create" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <metrics loc="26" ncloc="26" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Cli/Proxies/SubscriptionProxy.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\Proxies\SubscriptionProxy" namespace="Romansh\LaravelCreemAgent\Cli\Proxies">
+          <metrics complexity="8" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="17" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="11" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="16" type="method" name="listByStatus" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="method" name="find" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="method" name="cancel" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="34" type="method" name="pause" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="39" type="method" name="resume" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="44" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="17" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Cli/Proxies/TransactionProxy.php">
+        <class name="Romansh\LaravelCreemAgent\Cli\Proxies\TransactionProxy" namespace="Romansh\LaravelCreemAgent\Cli\Proxies">
+          <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="11" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="16" type="method" name="find" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="method" name="byCustomer" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="method" name="byProduct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="31" ncloc="31" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Console">
+      <file name="/home/www/laravel-creem-agent/src/Console/AgentChatCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\AgentChatCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="13" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <metrics loc="22" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Console/AgentInstallCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\AgentInstallCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="8" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="0" elements="43" coveredelements="0"/>
+        </class>
+        <line num="13" type="method" name="handle" visibility="public" complexity="8" crap="72" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <metrics loc="78" ncloc="73" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="0" elements="43" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Console/AgentStartCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\AgentStartCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="16" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <metrics loc="34" ncloc="34" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="16" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Console/AgentStatusCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\AgentStatusCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="0" elements="21" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="44" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="0" elements="21" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Console/AgentStopCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\AgentStopCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <metrics loc="20" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Console/HeartbeatCommand.php">
+        <class name="Romansh\LaravelCreemAgent\Console\HeartbeatCommand" namespace="Romansh\LaravelCreemAgent\Console">
+          <metrics complexity="12" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="35" coveredelements="0"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="23" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="42" type="method" name="printResult" visibility="private" complexity="8" crap="72" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <metrics loc="73" ncloc="73" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="35" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent">
+      <file name="/home/www/laravel-creem-agent/src/CreemAgentServiceProvider.php">
+        <class name="Romansh\LaravelCreemAgent\CreemAgentServiceProvider" namespace="Romansh\LaravelCreemAgent">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="23" coveredelements="0"/>
+        </class>
+        <line num="9" type="method" name="register" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="11" type="stmt" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="method" name="boot" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="44" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="23" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Events">
+      <file name="/home/www/laravel-creem-agent/src/Events/ChangeDetected.php">
+        <class name="Romansh\LaravelCreemAgent\Events\ChangeDetected" namespace="Romansh\LaravelCreemAgent\Events">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <metrics loc="16" ncloc="16" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Events/HeartbeatCompleted.php">
+        <class name="Romansh\LaravelCreemAgent\Events\HeartbeatCompleted" namespace="Romansh\LaravelCreemAgent\Events">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Events/WorkflowTriggered.php">
+        <class name="Romansh\LaravelCreemAgent\Events\WorkflowTriggered" namespace="Romansh\LaravelCreemAgent\Events">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Facades">
+      <file name="/home/www/laravel-creem-agent/src/Facades/CreemCli.php">
+        <class name="Romansh\LaravelCreemAgent\Facades\CreemCli" namespace="Romansh\LaravelCreemAgent\Facades">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="19" type="method" name="getFacadeAccessor" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <metrics loc="24" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Heartbeat">
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/ChangeDetector.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\ChangeDetector" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="11" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="46" coveredstatements="0" elements="48" coveredelements="0"/>
+        </class>
+        <line num="7" type="method" name="detect" visibility="public" complexity="5" crap="30" count="0"/>
+        <line num="9" type="stmt" count="0"/>
+        <line num="12" type="stmt" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="60" type="method" name="formatTransition" visibility="private" complexity="6" crap="42" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <metrics loc="75" ncloc="71" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="46" coveredstatements="0" elements="48" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/CustomerChecker.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\CustomerChecker" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="13" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="12" type="method" name="check" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="30" ncloc="30" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="13" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/HeartbeatRunner.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\HeartbeatRunner" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="8" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="0" elements="53" coveredelements="0"/>
+        </class>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="40" type="method" name="run" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="97" type="method" name="runAllStores" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="109" type="method" name="dispatchEvent" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <metrics loc="119" ncloc="112" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="0" elements="53" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/Reporter.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\Reporter" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="17" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="0" elements="44" coveredelements="0"/>
+        </class>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="method" name="reportFirstRun" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="method" name="reportChanges" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="48" type="method" name="send" visibility="private" complexity="6" crap="42" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="75" type="method" name="isQuietHours" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="87" type="method" name="isCritical" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <metrics loc="95" ncloc="94" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="0" elements="44" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/StateManager.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\StateManager" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="9" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="31" elements="49" coveredelements="35"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
+        <line num="13" type="stmt" count="17"/>
+        <line num="16" type="method" name="load" visibility="public" complexity="3" crap="5.44" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="method" name="save" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="59" type="method" name="isFirstRun" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="64" type="method" name="statePath" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="69" type="method" name="defaults" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="83" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <metrics loc="89" ncloc="87" classes="1" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="31" elements="49" coveredelements="35"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/SubscriptionChecker.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\SubscriptionChecker" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="19" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="0" elements="55" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="14" type="method" name="check" visibility="public" complexity="11" crap="132" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="85" type="method" name="classifyTransition" visibility="private" complexity="7" crap="56" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <metrics loc="94" ncloc="92" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="0" elements="55" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Heartbeat/TransactionChecker.php">
+        <class name="Romansh\LaravelCreemAgent\Heartbeat\TransactionChecker" namespace="Romansh\LaravelCreemAgent\Heartbeat">
+          <metrics complexity="8" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="0" elements="39" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="12" type="method" name="check" visibility="public" complexity="7" crap="56" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <metrics loc="62" ncloc="62" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="0" elements="39" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Http\Controllers">
+      <file name="/home/www/laravel-creem-agent/src/Http/Controllers/AgentChatController.php">
+        <class name="Romansh\LaravelCreemAgent\Http\Controllers\AgentChatController" namespace="Romansh\LaravelCreemAgent\Http\Controllers">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <metrics loc="28" ncloc="28" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Http/Controllers/AgentStatusController.php">
+        <class name="Romansh\LaravelCreemAgent\Http\Controllers\AgentStatusController" namespace="Romansh\LaravelCreemAgent\Http\Controllers">
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="17" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="index" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <metrics loc="35" ncloc="35" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="17" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Http/Controllers/TelegramWebhookController.php">
+        <class name="Romansh\LaravelCreemAgent\Http\Controllers\TelegramWebhookController" namespace="Romansh\LaravelCreemAgent\Http\Controllers">
+          <metrics complexity="23" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="0" elements="58" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="17" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="42" type="method" name="extractText" visibility="private" complexity="5" crap="30" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="51" type="method" name="extractChatId" visibility="private" complexity="3" crap="12" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="58" type="method" name="forwardToAgent" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="75" type="method" name="extractReply" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="95" type="method" name="sendReply" visibility="private" complexity="5" crap="30" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="109" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <metrics loc="116" ncloc="116" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="0" elements="58" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Notifications">
+      <file name="/home/www/laravel-creem-agent/src/Notifications/FirstHeartbeat.php">
+        <class name="Romansh\LaravelCreemAgent\Notifications\FirstHeartbeat" namespace="Romansh\LaravelCreemAgent\Notifications">
+          <metrics complexity="7" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="29" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="15" type="method" name="via" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="method" name="toSlack" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="38" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="47" type="method" name="resolveChannels" visibility="private" complexity="2" crap="6" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <metrics loc="56" ncloc="56" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="29" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Notifications/HeartbeatAlert.php">
+        <class name="Romansh\LaravelCreemAgent\Notifications\HeartbeatAlert" namespace="Romansh\LaravelCreemAgent\Notifications">
+          <metrics complexity="9" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="22" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="15" type="method" name="via" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="24" type="method" name="toSlack" visibility="public" complexity="5" crap="30" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="37" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <metrics loc="46" ncloc="46" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="22" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Notifications/HeartbeatSummary.php">
+        <class name="Romansh\LaravelCreemAgent\Notifications\HeartbeatSummary" namespace="Romansh\LaravelCreemAgent\Notifications">
+          <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="15" type="method" name="via" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="24" type="method" name="toSlack" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="33" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <metrics loc="43" ncloc="43" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Notifications/WorkflowAlert.php">
+        <class name="Romansh\LaravelCreemAgent\Notifications\WorkflowAlert" namespace="Romansh\LaravelCreemAgent\Notifications">
+          <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="17" type="method" name="via" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="method" name="toSlack" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="33" type="method" name="toArray" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="44" ncloc="44" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Romansh\LaravelCreemAgent\Workflows">
+      <file name="/home/www/laravel-creem-agent/src/Workflows/AnomalyDetection.php">
+        <class name="Romansh\LaravelCreemAgent\Workflows\AnomalyDetection" namespace="Romansh\LaravelCreemAgent\Workflows">
+          <metrics complexity="4" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="0" elements="31" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="4" crap="20" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <metrics loc="58" ncloc="56" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="0" elements="31" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Workflows/ChurnDetection.php">
+        <class name="Romansh\LaravelCreemAgent\Workflows\ChurnDetection" namespace="Romansh\LaravelCreemAgent\Workflows">
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <metrics loc="33" ncloc="33" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Workflows/FailedPaymentRecovery.php">
+        <class name="Romansh\LaravelCreemAgent\Workflows\FailedPaymentRecovery" namespace="Romansh\LaravelCreemAgent\Workflows">
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <metrics loc="34" ncloc="34" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="12" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Workflows/NewCustomerWelcome.php">
+        <class name="Romansh\LaravelCreemAgent\Workflows\NewCustomerWelcome" namespace="Romansh\LaravelCreemAgent\Workflows">
+          <metrics complexity="4" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="handle" visibility="public" complexity="4" crap="20" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <metrics loc="35" ncloc="35" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
+      </file>
+      <file name="/home/www/laravel-creem-agent/src/Workflows/RevenueDigest.php">
+        <class name="Romansh\LaravelCreemAgent\Workflows\RevenueDigest" namespace="Romansh\LaravelCreemAgent\Workflows">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="17" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <metrics loc="36" ncloc="36" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="17" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="41" loc="2267" ncloc="2221" classes="40" methods="132" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="938" coveredstatements="136" elements="1070" coveredelements="152"/>
+  </project>
+</coverage>
