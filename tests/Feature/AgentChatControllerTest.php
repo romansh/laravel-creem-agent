@@ -2,14 +2,11 @@
 
 namespace Romansh\LaravelCreemAgent\Tests\Feature;
 
-use Orchestra\Testbench\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Romansh\LaravelCreemAgent\Agent\AgentManager;
+use Orchestra\Testbench\TestCase;
 
 class AgentChatControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     protected function getPackageProviders($app)
     {
         return [\Romansh\LaravelCreemAgent\CreemAgentServiceProvider::class];

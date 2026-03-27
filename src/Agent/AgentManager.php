@@ -2,23 +2,51 @@
 
 namespace Romansh\LaravelCreemAgent\Agent;
 
+use Illuminate\Support\Facades\Log;
 use Romansh\LaravelCreemAgent\Cli\CreemCliManager;
 
 class AgentManager
 {
-    private CommandParser $parser;
+    private ParsesAgentMessages $ruleParser;
+    private ParsesAgentMessages $llmParser;
     private IntentRouter $router;
 
-    public function __construct(private CreemCliManager $cli)
-    {
-        $this->parser = new CommandParser();
-        $this->router = new IntentRouter($cli);
+    public function __construct(
+        private CreemCliManager $cli,
+        ?ParsesAgentMessages $ruleParser = null,
+        ?ParsesAgentMessages $llmParser = null,
+        ?IntentRouter $router = null,
+    ) {
+        $this->ruleParser = $ruleParser ?? new CommandParser();
+        $this->llmParser = $llmParser ?? new LlmCommandParser();
+        $this->router = $router ?? new IntentRouter($cli);
     }
 
     public function handleMessage(string $message): string
     {
-        $intent = $this->parser->parse($message);
-        return $this->router->route($intent);
+        $llmIntent = null;
+
+        if (config('creem-agent.llm.enabled', true)) {
+            try {
+                $llmIntent = $this->llmParser->parse($message);
+
+                if (($llmIntent['intent'] ?? 'unknown') !== 'unknown') {
+                    return $this->router->route($llmIntent);
+                }
+            } catch (\Throwable $e) {
+                Log::warning('[CreemAgent] LLM parser failed, falling back to rule parser.', [
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        $ruleIntent = $this->ruleParser->parse($message);
+
+        if (($ruleIntent['intent'] ?? 'unknown') !== 'unknown') {
+            return $this->router->route($ruleIntent);
+        }
+
+        return $this->router->route($llmIntent ?? $ruleIntent);
     }
 
     public function getActiveStore(): string

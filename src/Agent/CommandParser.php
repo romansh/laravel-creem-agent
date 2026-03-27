@@ -2,7 +2,7 @@
 
 namespace Romansh\LaravelCreemAgent\Agent;
 
-class CommandParser
+class CommandParser implements ParsesAgentMessages
 {
     public function parse(string $message): array
     {

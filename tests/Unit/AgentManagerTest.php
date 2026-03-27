@@ -4,6 +4,7 @@ namespace Romansh\LaravelCreemAgent\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
 use Romansh\LaravelCreemAgent\Agent\AgentManager;
+use Romansh\LaravelCreemAgent\Agent\ParsesAgentMessages;
 use Romansh\LaravelCreemAgent\Cli\CreemCliManager;
 
 class AgentManagerTest extends TestCase
@@ -41,7 +42,14 @@ class AgentManagerTest extends TestCase
         $cli->method('subscriptions')->willReturn($subs);
         $cli->method('getActiveStore')->willReturn('default');
 
-        $m = new AgentManager($cli);
+        $llm = new class implements ParsesAgentMessages {
+            public function parse(string $message): array
+            {
+                return ['intent' => 'unknown', 'message' => $message];
+            }
+        };
+
+        $m = new AgentManager($cli, null, $llm);
         $res = $m->handleMessage('how many active subscriptions?');
         $this->assertStringContainsString('subscription', $res);
     }
