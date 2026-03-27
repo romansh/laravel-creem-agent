@@ -14,10 +14,12 @@ use Romansh\LaravelCreemAgent\Cli\Proxies\TransactionProxy;
 class CreemCliManagerCoverageTest extends TestCase
 {
     private string $tmpDir;
+    private string $originalPath;
 
     protected function setUp(): void
     {
         parent::setUp();
+        $this->originalPath = getenv('PATH') ?: '';
         $this->tmpDir = sys_get_temp_dir() . '/creem-manager-' . uniqid();
         @mkdir($this->tmpDir, 0700, true);
     }
@@ -26,6 +28,7 @@ class CreemCliManagerCoverageTest extends TestCase
     {
         @unlink($this->tmpDir . '/creem');
         @rmdir($this->tmpDir);
+        putenv('PATH=' . $this->originalPath);
         Cache::flush();
         parent::tearDown();
     }

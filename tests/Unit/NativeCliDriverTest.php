@@ -8,10 +8,13 @@ use Romansh\LaravelCreemAgent\Cli\NativeCliDriver;
 class NativeCliDriverTest extends TestCase
 {
     protected string $tmpDir;
+    protected string $originalPath;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->originalPath = getenv('PATH') ?: '';
 
         $this->tmpDir = sys_get_temp_dir() . '/creem_test_' . uniqid();
         mkdir($this->tmpDir, 0700, true);
@@ -42,6 +45,7 @@ class NativeCliDriverTest extends TestCase
     {
         @unlink($this->tmpDir . '/creem');
         @rmdir($this->tmpDir);
+        putenv('PATH=' . $this->originalPath);
         parent::tearDown();
     }
 
