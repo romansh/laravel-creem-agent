@@ -88,6 +88,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Natural Language / LLM Routing
+    |--------------------------------------------------------------------------
+    | The agent uses Laravel AI SDK to classify free-form user requests into
+    | operational intents. If LLM routing fails or is unavailable, the package
+    | falls back to the built-in regex parser.
+    */
+    'llm' => [
+        'enabled' => env('CREEM_AGENT_LLM_ENABLED', true),
+        'provider' => env('CREEM_AGENT_LLM_PROVIDER', 'openai'),
+        'model' => env('CREEM_AGENT_LLM_MODEL'),
+        'timeout' => (int) env('CREEM_AGENT_LLM_TIMEOUT', 30),
+        'fallback_to_rules' => env('CREEM_AGENT_LLM_FALLBACK_TO_RULES', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Daemon
     |--------------------------------------------------------------------------
     */

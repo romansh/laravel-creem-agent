@@ -6,13 +6,14 @@
     "license": "MIT",
     "type": "library",
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/romansh/laravel-creem" },
-        { "type": "vcs", "url": "https://github.com/romansh/laravel-creem-cli" }
+        { "type": "vcs", "url": "git@github-laravel-creem-desktop:romansh/laravel-creem.git", "no-api": true },
+        { "type": "vcs", "url": "git@github-laravel-creem-cli-desktop:romansh/laravel-creem-cli.git", "no-api": true }
     ],
     "require": {
         "php": "^8.2",
         "romansh/laravel-creem": "^1.0",
-        "romansh/laravel-creem-cli": "^1.0",
+        "romansh/laravel-creem-cli": "^1.0 || dev-main",
+        "laravel/ai": "^0.4",
         "illuminate/support": "^11.0|^12.0",
         "illuminate/console": "^11.0|^12.0",
         "illuminate/notifications": "^11.0|^12.0",
@@ -45,6 +46,7 @@
     },
     "config": {
         "sort-packages": true,
+        "use-github-api": false,
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
