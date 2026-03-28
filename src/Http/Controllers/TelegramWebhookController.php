@@ -104,7 +104,9 @@ class TelegramWebhookController extends Controller
                 return;
             }
 
-            Http::post("https://api.telegram.org/bot{$token}/sendMessage", [
+            $base = config('creem-agent.notifications.telegram_api_base', 'https://api.telegram.org');
+
+            Http::post(rtrim($base, '/') . "/bot{$token}/sendMessage", [
                 'chat_id' => $chatId,
                 'text' => $reply,
             ]);

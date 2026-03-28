@@ -36,6 +36,7 @@ class TelegramWebhookControllerTest extends TestCase
         Route::post('/creem-agent/chat', fn() => response()->json(['reply' => 'route reply']));
         config()->set('creem-agent.notifications.telegram_bot_token', 'tok');
         config()->set('creem-agent.notifications.telegram_chat_id', 'fallback');
+        config()->set('creem-agent.notifications.telegram_api_base', 'http://telegram-smoke.local');
 
         Http::fake();
 
@@ -48,7 +49,7 @@ class TelegramWebhookControllerTest extends TestCase
         $this->assertSame(200, $response->getStatusCode());
         Http::assertSent(function ($request) {
             $data = $request->data();
-            return str_contains($request->url(), 'sendMessage')
+            return $request->url() === 'http://telegram-smoke.local/bottok/sendMessage'
                 && $data['chat_id'] === 'chat-1'
                 && $data['text'] === 'route reply';
         });

@@ -40,6 +40,7 @@ return [
         'slack_webhook_url' => env('CREEM_AGENT_SLACK_WEBHOOK'),
         'telegram_bot_token' => env('CREEM_AGENT_TELEGRAM_TOKEN'),
         'telegram_chat_id' => env('CREEM_AGENT_TELEGRAM_CHAT_ID'),
+        'telegram_api_base' => env('CREEM_AGENT_TELEGRAM_API_BASE', 'https://api.telegram.org'),
         'discord_webhook_url' => env('CREEM_AGENT_DISCORD_WEBHOOK'),
     ],
 
