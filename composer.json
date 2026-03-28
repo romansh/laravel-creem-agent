@@ -5,14 +5,10 @@
     "keywords": ["laravel", "creem", "agent", "ai", "heartbeat", "monitoring", "saas"],
     "license": "MIT",
     "type": "library",
-    "repositories": [
-        { "type": "vcs", "url": "git@github-laravel-creem-desktop:romansh/laravel-creem.git", "no-api": true },
-        { "type": "vcs", "url": "git@github-laravel-creem-cli-desktop:romansh/laravel-creem-cli.git", "no-api": true }
-    ],
     "require": {
         "php": "^8.2",
-        "romansh/laravel-creem": "^1.0",
-        "romansh/laravel-creem-cli": "^1.0 || dev-main",
+        "romansh/laravel-creem": "^1.2",
+        "romansh/laravel-creem-cli": "^1.2",
         "laravel/ai": "^0.4",
         "illuminate/support": "^11.0|^12.0",
         "illuminate/console": "^11.0|^12.0",
