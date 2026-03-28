@@ -18,6 +18,12 @@ class AgentChatControllerTest extends TestCase
         $response->assertStatus(422)->assertJson(['error' => 'Message is required']);
     }
 
+    public function test_chat_endpoint_rejects_message_exceeding_max_length()
+    {
+        $response = $this->postJson('/creem-agent/chat', ['message' => str_repeat('a', 2001)]);
+        $response->assertStatus(422)->assertJson(['error' => 'Message too long (max 2000 characters)']);
+    }
+
     public function test_chat_endpoint_returns_agent_response()
     {
         // Bind a fake AgentManager to the container

@@ -26,6 +26,10 @@ class TelegramWebhookController extends Controller
             return response()->json(['ok' => false, 'reason' => 'no message'], 400);
         }
 
+        if (mb_strlen($text) > 2000) {
+            return response()->json(['ok' => false, 'reason' => 'message too long'], 400);
+        }
+
         try {
             $content = $this->forwardToAgent($text, $chatId);
         } catch (\Throwable $e) {

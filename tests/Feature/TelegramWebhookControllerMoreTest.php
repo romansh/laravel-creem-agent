@@ -69,4 +69,17 @@ class TelegramWebhookControllerMoreTest extends TestCase
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame([], $sent);
     }
+
+    public function test_handle_rejects_message_exceeding_max_length()
+    {
+        $controller = new TelegramWebhookController();
+        $response = $controller->handle(Request::create('/', 'POST', [
+            'message' => ['text' => str_repeat('a', 2001), 'chat' => ['id' => '1']],
+        ]));
+
+        $this->assertSame(400, $response->getStatusCode());
+        $data = json_decode($response->getContent(), true);
+        $this->assertFalse($data['ok']);
+        $this->assertSame('message too long', $data['reason']);
+    }
 }
