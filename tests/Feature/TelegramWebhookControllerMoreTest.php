@@ -51,6 +51,30 @@ class TelegramWebhookControllerMoreTest extends TestCase
         ], $sent);
     }
 
+    public function test_handle_extracts_response_key_from_agent_json()
+    {
+        config()->set('creem-agent.notifications.telegram_bot_token', 'tok');
+        config()->set('creem-agent.notifications.telegram_chat_id', '999');
+
+        $sent = [];
+
+        $controller = new TelegramWebhookController(
+            fn() => json_encode(['response' => "Store 'default' status:\n  Active subs: 13", 'store' => 'default']),
+            function (string $token, mixed $chatId, string $reply) use (&$sent): void {
+                $sent[] = compact('token', 'chatId', 'reply');
+            }
+        );
+
+        $response = $controller->handle(Request::create('/', 'POST', [
+            'message' => ['text' => 'status', 'chat' => ['id' => '999']],
+        ]));
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame([
+            ['token' => 'tok', 'chatId' => '999', 'reply' => "Store 'default' status:\n  Active subs: 13"],
+        ], $sent);
+    }
+
     public function test_handle_uses_channel_post_and_skips_send_when_chat_or_token_missing()
     {
         $sent = [];

@@ -89,6 +89,10 @@ class TelegramWebhookController extends Controller
             return $json['reply'];
         }
 
+        if (!empty($json['response'])) {
+            return $json['response'];
+        }
+
         if (!empty($json['message'])) {
             return $json['message'];
         }
@@ -110,10 +114,17 @@ class TelegramWebhookController extends Controller
 
             $base = config('creem-agent.notifications.telegram_api_base', 'https://api.telegram.org');
 
-            Http::post(rtrim($base, '/') . "/bot{$token}/sendMessage", [
+            $response = Http::post(rtrim($base, '/') . "/bot{$token}/sendMessage", [
                 'chat_id' => $chatId,
                 'text' => $reply,
             ]);
+
+            if (!$response->successful()) {
+                Log::error('Telegram sendMessage returned non-success response', [
+                    'status' => $response->status(),
+                    'body' => $response->body(),
+                ]);
+            }
         } catch (\Throwable $e) {
             Log::error('Telegram sendMessage failed: '.$e->getMessage());
         }
