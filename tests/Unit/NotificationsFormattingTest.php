@@ -30,11 +30,14 @@ class NotificationsFormattingTest extends TestCase
         $fb = new FirstHeartbeat('s1', ['customerCount' => 2, 'transactionCount' => 1, 'subscriptions' => ['active' => 1]]);
         $this->assertContains('slack', $fb->via(null));
         $this->assertEquals('first_heartbeat', $fb->toArray(null)['type']);
+        $this->assertStringContainsString('Monitoring active (s1)', $fb->toTelegramText());
 
         $ha = new HeartbeatAlert('s1', ['message' => 'hey', 'severity' => 'alert']);
         $this->assertEquals('heartbeat_alert', $ha->toArray(null)['type']);
+        $this->assertStringContainsString('[s1] hey', $ha->toTelegramText());
 
         $hs = new HeartbeatSummary('s1', [['message' => 'm1'], ['message' => 'm2']]);
         $this->assertEquals(2, $hs->toArray(null)['count']);
+        $this->assertStringContainsString('Store update (s1)', $hs->toTelegramText());
     }
 }
