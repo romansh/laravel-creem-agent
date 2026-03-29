@@ -35,10 +35,6 @@ class CommandCoverageTest extends TestCase
 
     public function test_agent_install_command_covers_native_cli_branch_and_state_creation()
     {
-        if (!class_exists(\Romansh\LaravelCreem\Creem::class)) {
-            $this->markTestSkipped('laravel-creem dependency is not autoloadable in this local environment');
-        }
-
         $statePath = sys_get_temp_dir() . '/creem-agent-install-' . uniqid();
         config()->set('creem.profiles.default', ['api_key' => 'test', 'test_mode' => true]);
         config()->set('creem.test_api_url', 'https://api.test');

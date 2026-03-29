@@ -39,7 +39,7 @@ class TelegramWebhookRouteRegistrationTest extends TestCase
         $router->setRoutes(new RouteCollection());
         $this->app->instance(TelegramModeResolver::class, new TelegramModeResolver());
 
-        require '/home/roman/php/run/laravel-creem-agent/routes/agent.php';
+        require dirname(__DIR__, 2).'/routes/agent.php';
 
         return $router->getRoutes()->getRoutes();
     }

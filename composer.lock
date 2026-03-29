@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5778f4b49090555c8116d1f90c19b7c",
+    "content-hash": "fc60cf17b23e758d574351a62832c6a7",
     "packages": [
         {
             "name": "brick/math",
@@ -3242,8 +3242,14 @@
             "version": "1.2.9",
             "source": {
                 "type": "git",
-                "url": "git@github-laravel-creem-desktop:romansh/laravel-creem.git",
+                "url": "https://github.com/romansh/laravel-creem.git",
                 "reference": "9dfcee22a86907a718195c7d1d9d873235ea6a4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romansh/laravel-creem/zipball/9dfcee22a86907a718195c7d1d9d873235ea6a4f",
+                "reference": "9dfcee22a86907a718195c7d1d9d873235ea6a4f",
+                "shasum": ""
             },
             "require": {
                 "illuminate/http": "^10.0|^11.0|^12.0",
@@ -3261,12 +3267,12 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Romansh\\LaravelCreem\\CreemServiceProvider"
-                    ],
                     "aliases": {
                         "Creem": "Romansh\\LaravelCreem\\Facades\\Creem"
-                    }
+                    },
+                    "providers": [
+                        "Romansh\\LaravelCreem\\CreemServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -3274,25 +3280,7 @@
                     "Romansh\\LaravelCreem\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Romansh\\LaravelCreem\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "test-coverage": [
-                    "vendor/bin/phpunit --coverage-html coverage"
-                ],
-                "format": [
-                    "vendor/bin/pint"
-                ],
-                "format-test": [
-                    "vendor/bin/pint --test"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3315,15 +3303,25 @@
                 "saas",
                 "subscription"
             ],
+            "support": {
+                "issues": "https://github.com/romansh/laravel-creem/issues",
+                "source": "https://github.com/romansh/laravel-creem/tree/v1.2.9"
+            },
             "time": "2026-03-20T20:07:54+00:00"
         },
         {
             "name": "romansh/laravel-creem-cli",
-            "version": "dev-main",
+            "version": "1.2.9",
             "source": {
                 "type": "git",
-                "url": "git@github-laravel-creem-cli-desktop:romansh/laravel-creem-cli.git",
-                "reference": "51e808aaf01287688d8193f63e239c711d3c98ec"
+                "url": "https://github.com/romansh/laravel-creem-cli.git",
+                "reference": "d0d81fad16dd02bb7728e48f269904fc63850403"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romansh/laravel-creem-cli/zipball/d0d81fad16dd02bb7728e48f269904fc63850403",
+                "reference": "d0d81fad16dd02bb7728e48f269904fc63850403",
+                "shasum": ""
             },
             "require": {
                 "illuminate/console": "^11.0|^12.0",
@@ -3335,7 +3333,6 @@
                 "orchestra/testbench": "^9.0|^10.0",
                 "pestphp/pest": "^3.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -3349,11 +3346,7 @@
                     "Romansh\\LaravelCreemCli\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Romansh\\LaravelCreemCli\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3365,7 +3358,11 @@
                 "payments",
                 "saas"
             ],
-            "time": "2026-03-21T17:33:33+00:00"
+            "support": {
+                "issues": "https://github.com/romansh/laravel-creem-cli/issues",
+                "source": "https://github.com/romansh/laravel-creem-cli/tree/v1.2.9"
+            },
+            "time": "2026-03-28T21:58:22+00:00"
         },
         {
             "name": "symfony/clock",
@@ -9947,9 +9944,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "romansh/laravel-creem-cli": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

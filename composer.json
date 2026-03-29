@@ -1,6 +1,5 @@
 {
     "name": "romansh/laravel-creem-agent",
-    "version": "1.2.8",
     "description": "Autonomous AI agent for Creem.io store monitoring — heartbeat, proactive workflows, notifications, chat interface",
     "keywords": ["laravel", "creem", "agent", "ai", "heartbeat", "monitoring", "saas"],
     "license": "MIT",
