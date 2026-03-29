@@ -30,6 +30,20 @@ class TelegramWebhookController extends Controller
             return response()->json(['ok' => false, 'reason' => 'message too long'], 400);
         }
 
+        // Provide a simple menu for common standard messages to avoid LLM usage
+        $lower = mb_strtolower(trim($text));
+        if (in_array($lower, ['menu', '/menu'], true)) {
+            $keyboard = [
+                'keyboard' => [[['text' => 'status']], [['text' => 'recent transactions']], [['text' => 'any payment issues?']]],
+                'one_time_keyboard' => true,
+                'resize_keyboard' => true,
+            ];
+
+            $this->sendReply($token, $chatId, ['text' => 'Choose an option:', 'reply_markup' => $keyboard]);
+
+            return response()->json(['ok' => true]);
+        }
+
         try {
             $content = $this->forwardToAgent($text, $chatId);
         } catch (\Throwable $e) {
@@ -100,7 +114,7 @@ class TelegramWebhookController extends Controller
         return (string) json_encode($json);
     }
 
-    private function sendReply(?string $token, mixed $chatId, string $reply): void
+    private function sendReply(?string $token, mixed $chatId, mixed $reply): void
     {
         if (!$token || !$chatId) {
             return;
@@ -114,10 +128,14 @@ class TelegramWebhookController extends Controller
 
             $base = config('creem-agent.notifications.telegram_api_base', 'https://api.telegram.org');
 
-            $response = Http::post(rtrim($base, '/') . "/bot{$token}/sendMessage", [
-                'chat_id' => $chatId,
-                'text' => $reply,
-            ]);
+            // Allow passing a payload array to include reply_markup and other options
+            if (is_array($reply)) {
+                $payload = array_merge(['chat_id' => $chatId], $reply);
+            } else {
+                $payload = ['chat_id' => $chatId, 'text' => $reply];
+            }
+
+            $response = Http::post(rtrim($base, '/') . "/bot{$token}/sendMessage", $payload);
 
             if (!$response->successful()) {
                 Log::error('Telegram sendMessage returned non-success response', [

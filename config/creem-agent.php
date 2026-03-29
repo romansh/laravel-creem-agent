@@ -77,6 +77,7 @@ return [
     'openclaw' => [
         'enabled' => env('CREEM_AGENT_OPENCLAW', false),
         'endpoint' => env('OPENCLAW_ENDPOINT'),
+        'shared_secret' => env('OPENCLAW_SHARED_SECRET'),
         'telegram' => [
             'bot_token' => env('OPENCLAW_TELEGRAM_BOT_TOKEN', env('TELEGRAM_BOT_TOKEN', env('CREEM_AGENT_TELEGRAM_TOKEN'))),
             'dm_policy' => env('OPENCLAW_TELEGRAM_DM_POLICY', 'pairing'),

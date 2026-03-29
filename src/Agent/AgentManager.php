@@ -22,9 +22,21 @@ class AgentManager
         $this->router = $router ?? new IntentRouter($cli);
     }
 
-    public function handleMessage(string $message): string
+    public function handleMessage(string $message, array $context = []): string
     {
         $llmIntent = null;
+
+        // If source is Telegram, avoid using the LLM to prevent token usage
+        $source = $context['source'] ?? null;
+        if ($source === 'telegram') {
+            $ruleIntent = $this->ruleParser->parse($message);
+
+            if (($ruleIntent['intent'] ?? 'unknown') !== 'unknown') {
+                return $this->router->route($ruleIntent);
+            }
+
+            return $this->router->route($ruleIntent);
+        }
 
         if (config('creem-agent.llm.enabled', true)) {
             try {

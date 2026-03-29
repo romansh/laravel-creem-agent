@@ -21,7 +21,8 @@ class AgentChatController extends Controller
             return response()->json(['error' => 'Message too long (max 2000 characters)'], 422);
         }
 
-        $response = $agent->handleMessage($message);
+        $source = $request->input('source');
+        $response = $agent->handleMessage($message, ['source' => $source]);
 
         return response()->json([
             'response' => $response,
