@@ -35,6 +35,20 @@ class FirstHeartbeat extends Notification
             });
     }
 
+    public function toTelegramText(): string
+    {
+        $subscriptions = $this->state['subscriptions'] ?? [];
+
+        return implode("\n", [
+            "Monitoring active ({$this->store})",
+            'Customers: '.($this->state['customerCount'] ?? 0),
+            'Transactions: '.($this->state['transactionCount'] ?? 0),
+            'Active subs: '.($subscriptions['active'] ?? 0),
+            'Trialing: '.($subscriptions['trialing'] ?? 0),
+            'Past due: '.($subscriptions['past_due'] ?? 0),
+        ]);
+    }
+
     public function toArray($notifiable): array
     {
         return [

@@ -2,11 +2,13 @@
 
 namespace Romansh\LaravelCreemAgent\Heartbeat;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Log;
 use Romansh\LaravelCreemAgent\Notifications\HeartbeatAlert;
 use Romansh\LaravelCreemAgent\Notifications\HeartbeatSummary;
 use Romansh\LaravelCreemAgent\Notifications\FirstHeartbeat;
+use Romansh\LaravelCreemAgent\Support\TelegramMessageSender;
 use Romansh\LaravelCreemAgent\Support\TelegramModeResolver;
 
 class Reporter
@@ -15,6 +17,7 @@ class Reporter
         private ?\Closure $clock = null,
         private ?\Closure $sender = null,
         private ?TelegramModeResolver $telegramMode = null,
+        private ?TelegramMessageSender $telegramSender = null,
     ) {}
 
     public function reportFirstRun(string $store, array $state): void
@@ -66,14 +69,29 @@ class Reporter
 
             $telegramMode = $this->telegramMode ?? app(TelegramModeResolver::class);
 
-            if ($telegramMode->usesLaravelTransport()) {
-                $notifier = $notifier->route('telegram', config('creem-agent.notifications.telegram_chat_id'));
-            }
-
             $notifier->notify($notification);
+
+            if ($telegramMode->usesLaravelTransport()) {
+                $message = $this->resolveTelegramMessage($notification);
+
+                if ($message !== null) {
+                    ($this->telegramSender ?? app(TelegramMessageSender::class))->send($message);
+                }
+            }
         } catch (\Exception $e) {
             Log::error("[CreemAgent] Failed to send notification", ['error' => $e->getMessage()]);
         }
+    }
+
+    private function resolveTelegramMessage(object $notification): ?string
+    {
+        if (!method_exists($notification, 'toTelegramText')) {
+            return null;
+        }
+
+        $message = $notification->toTelegramText();
+
+        return is_string($message) && trim($message) !== '' ? $message : null;
     }
 
     private function isQuietHours(): bool

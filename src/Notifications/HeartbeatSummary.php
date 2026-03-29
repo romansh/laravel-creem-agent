@@ -30,6 +30,13 @@ class HeartbeatSummary extends Notification
             ->content("📊 Creem store update ({$this->store}):\n{$summary}");
     }
 
+    public function toTelegramText(): string
+    {
+        $lines = array_map(fn($change) => "- {$change['message']}", $this->changes);
+
+        return "Store update ({$this->store})\n".implode("\n", $lines);
+    }
+
     public function toArray($notifiable): array
     {
         return [

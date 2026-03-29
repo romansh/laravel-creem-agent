@@ -34,6 +34,18 @@ class HeartbeatAlert extends Notification
             ->content("{$emoji} [{$this->store}] {$this->change['message']}");
     }
 
+    public function toTelegramText(): string
+    {
+        $emoji = match ($this->change['severity'] ?? 'info') {
+            'good_news' => '💰',
+            'warning' => '⚠️',
+            'alert' => '🚨',
+            default => 'ℹ️',
+        };
+
+        return "{$emoji} [{$this->store}] {$this->change['message']}";
+    }
+
     public function toArray($notifiable): array
     {
         return [
