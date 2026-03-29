@@ -2,7 +2,12 @@
 
 namespace Romansh\LaravelCreemAgent;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Romansh\LaravelCreem\Events\CheckoutCompleted;
+use Romansh\LaravelCreem\Events\PaymentFailed;
+use Romansh\LaravelCreem\Events\SubscriptionPastDue;
+use Romansh\LaravelCreemAgent\Listeners\CreemWebhookTelegramNotifier;
 
 class CreemAgentServiceProvider extends ServiceProvider
 {
@@ -40,5 +45,9 @@ class CreemAgentServiceProvider extends ServiceProvider
         }
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/agent.php');
+
+        Event::listen(CheckoutCompleted::class, [CreemWebhookTelegramNotifier::class, 'handleCheckoutCompleted']);
+        Event::listen(SubscriptionPastDue::class, [CreemWebhookTelegramNotifier::class, 'handleSubscriptionPastDue']);
+        Event::listen(PaymentFailed::class, [CreemWebhookTelegramNotifier::class, 'handlePaymentFailed']);
     }
 }
