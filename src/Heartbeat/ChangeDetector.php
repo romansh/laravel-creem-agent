@@ -61,13 +61,14 @@ class ChangeDetector
     {
         $subId = $transition['subscription_id'];
         $from = $transition['from'] ?? 'new';
-        $to = $transition['to'];
+        $to = $transition['to'] ?? 'unknown';
 
         return match ($transition['type']) {
             'new' => "New subscription: {$subId} ({$to})",
             'warning' => "Payment issue: {$subId} moved from {$from} to {$to}",
             'alert' => "Subscription lost: {$subId} moved from {$from} to {$to}",
             'good_news' => "Good news: {$subId} moved from {$from} to {$to}",
+            'disappeared' => "Subscription {$subId}: previously {$from}, now no longer returned by the API",
             default => "Subscription {$subId}: {$from} → {$to}",
         };
     }

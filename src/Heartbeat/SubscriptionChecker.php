@@ -69,7 +69,7 @@ class SubscriptionChecker
                 $transitions[] = [
                     'subscription_id' => $subId,
                     'from' => $oldStatus,
-                    'to' => 'unknown',
+                    'to' => null,
                     'type' => 'disappeared',
                 ];
             }

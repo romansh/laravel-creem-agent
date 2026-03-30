@@ -4,6 +4,7 @@ namespace Romansh\LaravelCreemAgent\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
 use Romansh\LaravelCreemAgent\Agent\AgentManager;
+use Romansh\LaravelCreemAgent\Agent\IntentRouter;
 use Romansh\LaravelCreemAgent\Agent\ParsesAgentMessages;
 use Romansh\LaravelCreemAgent\Cli\CreemCliManager;
 
@@ -52,5 +53,69 @@ class AgentManagerTest extends TestCase
         $m = new AgentManager($cli, null, $llm);
         $res = $m->handleMessage('how many active subscriptions?');
         $this->assertStringContainsString('subscription', $res);
+    }
+
+    public function test_telegram_uses_rule_parser_before_llm()
+    {
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $rule = new class implements ParsesAgentMessages {
+            public function parse(string $message): array
+            {
+                return ['intent' => 'status', 'message' => $message];
+            }
+        };
+
+        $llm = new class implements ParsesAgentMessages {
+            public function parse(string $message): array
+            {
+                return ['intent' => 'query_transactions', 'message' => $message];
+            }
+        };
+
+        $router = $this->createMock(IntentRouter::class);
+        $router->expects($this->once())
+            ->method('route')
+            ->with(['intent' => 'status', 'message' => 'status'])
+            ->willReturn('rule response');
+
+        $manager = new AgentManager($cli, $rule, $llm, $router);
+
+        $this->assertSame('rule response', $manager->handleMessage('status', ['source' => 'telegram']));
+    }
+
+    public function test_telegram_falls_back_to_llm_when_rule_parser_returns_unknown()
+    {
+        config()->set('creem-agent.llm.enabled', true);
+
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $rule = new class implements ParsesAgentMessages {
+            public function parse(string $message): array
+            {
+                return ['intent' => 'unknown', 'message' => $message];
+            }
+        };
+
+        $llm = new class implements ParsesAgentMessages {
+            public function parse(string $message): array
+            {
+                return ['intent' => 'status', 'message' => $message];
+            }
+        };
+
+        $router = $this->createMock(IntentRouter::class);
+        $router->expects($this->once())
+            ->method('route')
+            ->with(['intent' => 'status', 'message' => 'how are things going?'])
+            ->willReturn('llm response');
+
+        $manager = new AgentManager($cli, $rule, $llm, $router);
+
+        $this->assertSame('llm response', $manager->handleMessage('how are things going?', ['source' => 'telegram']));
     }
 }

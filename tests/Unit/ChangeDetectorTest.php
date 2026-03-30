@@ -37,4 +37,26 @@ class ChangeDetectorTest extends TestCase
         $this->assertContains('new_customers', $types);
         $this->assertContains('churn_spike', $types);
     }
+
+    public function test_detect_formats_disappeared_subscriptions_without_unknown_status()
+    {
+        $det = new ChangeDetector();
+
+        $changes = $det->detect(
+            [],
+            ['newTransactions' => []],
+            ['transitions' => [[
+                'type' => 'disappeared',
+                'subscription_id' => 'sub_missing',
+                'from' => 'active',
+                'to' => null,
+            ]]],
+            ['newCount' => 0, 'totalCount' => 0],
+        );
+
+        $this->assertSame(
+            'Subscription sub_missing: previously active, now no longer returned by the API',
+            $changes[0]['message']
+        );
+    }
 }
