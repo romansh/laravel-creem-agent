@@ -13,7 +13,17 @@ class CommandParser implements ParsesAgentMessages
             return ['intent' => 'switch_store', 'store' => $m[1]];
         }
 
-        // Query subscriptions
+        // Cancel subscription (must be before general subscription match)
+        if (preg_match('/cancel\s+(?:subscription\s+)?(sub_\w+)/i', $message, $m)) {
+            return ['intent' => 'cancel_subscription', 'id' => $m[1]];
+        }
+
+        // Create checkout (must be before general product match)
+        if (preg_match('/create\s+checkout\s+(?:for\s+)?(?:product\s+)?(prod_\w+)/i', $message, $m)) {
+            return ['intent' => 'create_checkout', 'product_id' => $m[1]];
+        }
+
+        // Query subscriptions — count questions
         if (preg_match('/(?:how many|count|number of)\s+(?:active\s+)?subscriptions?/i', $message)) {
             return ['intent' => 'query_subscriptions', 'status' => 'active'];
         }
@@ -21,7 +31,7 @@ class CommandParser implements ParsesAgentMessages
             return ['intent' => 'query_subscriptions', 'status' => $m[1]];
         }
 
-        // Payment issues
+        // Payment issues / past due
         if (preg_match('/payment\s+(?:issues?|failures?|problems?)|past.?due/i', $message)) {
             return ['intent' => 'query_subscriptions', 'status' => 'past_due'];
         }
@@ -31,29 +41,19 @@ class CommandParser implements ParsesAgentMessages
             return ['intent' => 'query_customers'];
         }
 
-        // Revenue / transactions
+        // Revenue / transactions / sales
         if (preg_match('/revenue|transactions?|sales?/i', $message)) {
             return ['intent' => 'query_transactions'];
         }
 
-        // Status
-        if (preg_match('/status|health|overview|summary/i', $message)) {
-            return ['intent' => 'status'];
-        }
-
-        // Run heartbeat
-        if (preg_match('/\b(heartbeat|check|monitor)\b/i', $message)) {
+        // Run heartbeat — must be before status to avoid "check" conflicting
+        if (preg_match('/\b(heartbeat|monitor)\b|run\s+(?:a\s+)?(?:check|heartbeat)/i', $message)) {
             return ['intent' => 'run_heartbeat'];
         }
 
-        // Cancel subscription
-        if (preg_match('/cancel\s+(?:subscription\s+)?(sub_\w+)/i', $message, $m)) {
-            return ['intent' => 'cancel_subscription', 'id' => $m[1]];
-        }
-
-        // Create checkout
-        if (preg_match('/create\s+checkout\s+(?:for\s+)?(?:product\s+)?(prod_\w+)/i', $message, $m)) {
-            return ['intent' => 'create_checkout', 'product_id' => $m[1]];
+        // Status / overview
+        if (preg_match('/\b(?:status|health|overview|summary|dashboard)\b/i', $message)) {
+            return ['intent' => 'status'];
         }
 
         // Products
@@ -62,8 +62,18 @@ class CommandParser implements ParsesAgentMessages
         }
 
         // Help
-        if (preg_match('/help|what can you/i', $message)) {
+        if (preg_match('/\bhelp\b|what can you/i', $message)) {
             return ['intent' => 'help'];
+        }
+
+        // General subscription mention (after more specific patterns)
+        if (preg_match('/subscriptions?/i', $message)) {
+            return ['intent' => 'query_subscriptions', 'status' => 'active'];
+        }
+
+        // General customer mention
+        if (preg_match('/customers?/i', $message)) {
+            return ['intent' => 'query_customers'];
         }
 
         return ['intent' => 'unknown', 'message' => $message];

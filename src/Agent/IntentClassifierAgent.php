@@ -10,38 +10,61 @@ class IntentClassifierAgent implements Agent
     use Promptable;
 
     private const INSTRUCTIONS = <<<'PROMPT'
-You classify user requests for a Creem store operations agent.
+You classify user requests for a Creem payment store operations agent.
 
-Return only valid compact JSON with this shape:
+Return ONLY valid compact JSON (no markdown, no code fences, no explanation):
 {"intent":"...","store":null,"status":null,"id":null,"product_id":null}
 
-Allowed intents:
-- switch_store
-- query_subscriptions
-- query_customers
-- query_transactions
-- query_products
-- status
-- run_heartbeat
-- cancel_subscription
-- create_checkout
-- help
-- unknown
+## Allowed intents
 
-Rules:
-- Use switch_store only when the user wants to change the active store. Put the target store in "store".
-- Use query_subscriptions for subscription counts and status questions. Put the subscription status in "status" when known.
-- Map payment issues / failed payments / past due requests to query_subscriptions with status "past_due".
-- Use query_customers for customer counts and customer list questions.
-- Use query_transactions for revenue, sales, and transactions questions.
-- Use query_products for product listing questions.
-- Use status for overview, health, summary, or current store status questions.
-- Use run_heartbeat for monitor, heartbeat, sync, or check-now requests.
-- Use cancel_subscription only when a concrete subscription id like sub_123 is present. Put it into "id".
-- Use create_checkout only when a concrete product id like prod_123 is present. Put it into "product_id".
-- Use help when the user asks what the agent can do.
-- If you are not confident, return intent "unknown".
-- Never add explanations, markdown, or code fences.
+switch_store — user wants to change the active store
+query_subscriptions — questions about subscriptions, counts, statuses
+query_customers — questions about customers, customer counts
+query_transactions — questions about revenue, transactions, sales, recent payments
+query_products — questions about products, pricing, catalog
+status — store overview, health, summary, "how are things", dashboard
+run_heartbeat — run a check/sync/monitor now, detect changes
+cancel_subscription — cancel a specific subscription (requires sub_XXX id)
+create_checkout — create a checkout link (requires prod_XXX id)
+help — what the agent can do, available commands
+unknown — cannot confidently classify
+
+## Classification rules
+
+1. If the user asks about the overall store state, health, dashboard, or general "how's it going" → status
+2. If they ask "how many subscriptions", "active subs", "past due", "payment issues", "failed payments", "are there problems with payments" → query_subscriptions (set status field when a specific status is mentioned: active, trialing, past_due, canceled, paused)
+3. If they ask about customers, customer count, buyers → query_customers
+4. If they ask about revenue, sales, transactions, recent payments, income, money → query_transactions
+5. If they ask about products, catalog, what's for sale, pricing → query_products
+6. If they want to switch/change/select a different store → switch_store (put store name in "store")
+7. If they want to run a heartbeat, check for changes, sync, monitor → run_heartbeat
+8. If they mention canceling with a specific sub_XXX id → cancel_subscription (put id in "id")
+9. If they mention creating checkout with a specific prod_XXX id → create_checkout (put id in "product_id")
+10. If they ask what commands exist, what you can do, help → help
+11. If unsure → unknown
+
+## Natural language examples
+
+"how's the store doing?" → status
+"give me an overview" → status
+"what's going on?" → status
+"how are things?" → status
+"any active subscriptions?" → query_subscriptions, status=active
+"how many subs are past due?" → query_subscriptions, status=past_due
+"are there payment problems?" → query_subscriptions, status=past_due
+"show me recent sales" → query_transactions
+"how much revenue?" → query_transactions
+"what did we earn today?" → query_transactions
+"what products do we have?" → query_products
+"list the catalog" → query_products
+"how many customers?" → query_customers
+"total buyers" → query_customers
+"run a check" → run_heartbeat
+"sync now" → run_heartbeat
+"detect changes" → run_heartbeat
+"switch to store production" → switch_store, store=production
+"help" → help
+"what can you do?" → help
 PROMPT;
 
     public function instructions(): string
