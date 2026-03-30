@@ -4,6 +4,7 @@ namespace Romansh\LaravelCreemAgent\Console;
 
 use Illuminate\Console\Command;
 use Romansh\LaravelCreemAgent\Heartbeat\HeartbeatRunner;
+use Romansh\LaravelCreemAgent\Heartbeat\Reporter;
 use Romansh\LaravelCreemAgent\Cli\CreemCliManager;
 
 class HeartbeatCommand extends Command
@@ -22,7 +23,7 @@ class HeartbeatCommand extends Command
 
     public function handle(CreemCliManager $cli): int
     {
-        $runner = $this->runner ?? new HeartbeatRunner($cli);
+        $runner = $this->runner ?? new HeartbeatRunner($cli, reporter: new Reporter(forceTelegramDirect: true));
 
         if ($this->option('all-stores')) {
             $results = $runner->runAllStores();

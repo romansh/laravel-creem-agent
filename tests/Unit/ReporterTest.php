@@ -59,4 +59,25 @@ class ReporterTest extends TestCase
         });
         Http::assertNothingSent();
     }
+
+    public function test_report_first_run_sends_telegram_when_forced_from_console(): void
+    {
+        Notification::fake();
+        Http::fake(['https://api.telegram.test/*' => Http::response(['ok' => true], 200)]);
+
+        config(['creem-agent.telegram.mode' => 'openclaw']);
+        config([
+            'creem-agent.notifications.telegram_bot_token' => 'bot-token',
+            'creem-agent.notifications.telegram_chat_id' => '12345',
+            'creem-agent.notifications.telegram_api_base' => 'https://api.telegram.test',
+        ]);
+
+        $rep = new Reporter(forceTelegramDirect: true);
+        $rep->reportFirstRun('default', ['some' => 'state']);
+
+        Http::assertSent(function (Request $request): bool {
+            return $request->url() === 'https://api.telegram.test/botbot-token/sendMessage'
+                && $request['chat_id'] === '12345';
+        });
+    }
 }

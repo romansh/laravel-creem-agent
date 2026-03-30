@@ -18,6 +18,7 @@ class Reporter
         private ?\Closure $sender = null,
         private ?TelegramModeResolver $telegramMode = null,
         private ?TelegramMessageSender $telegramSender = null,
+        private bool $forceTelegramDirect = false,
     ) {}
 
     public function reportFirstRun(string $store, array $state): void
@@ -71,7 +72,7 @@ class Reporter
 
             $notifier->notify($notification);
 
-            if ($telegramMode->usesLaravelTransport()) {
+            if ($this->forceTelegramDirect || $telegramMode->usesLaravelTransport()) {
                 $message = $this->resolveTelegramMessage($notification);
 
                 if ($message !== null) {
