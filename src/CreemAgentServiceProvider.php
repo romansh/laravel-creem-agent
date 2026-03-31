@@ -46,6 +46,7 @@ class CreemAgentServiceProvider extends ServiceProvider
 
             $this->commands([
                 Console\HeartbeatCommand::class,
+                Console\HeartbeatResetCommand::class,
                 Console\AgentStartCommand::class,
                 Console\AgentStopCommand::class,
                 Console\AgentStatusCommand::class,

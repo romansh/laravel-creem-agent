@@ -44,4 +44,35 @@ class StateManagerTest extends TestCase
         $this->assertSame(0, $merged['subscriptions']['expired']);
         $this->assertFalse($manager->isFirstRun($merged));
     }
+
+    public function test_reset_rewrites_state_to_defaults()
+    {
+        $dir = sys_get_temp_dir() . '/creem-state-reset-' . uniqid();
+        @mkdir($dir, 0755, true);
+        config()->set('creem-agent.state_path', $dir);
+
+        $manager = new StateManager();
+        $manager->save('alpha', [
+            'lastCheckAt' => '2026-01-01T00:00:00Z',
+            'lastTransactionId' => 'txn_123',
+            'transactionCount' => 99,
+            'customerCount' => 42,
+            'subscriptions' => [
+                'active' => 10,
+                'trialing' => 4,
+                'past_due' => 1,
+                'paused' => 2,
+                'canceled' => 3,
+                'expired' => 5,
+                'scheduled_cancel' => 6,
+            ],
+            'knownSubscriptions' => ['sub_1'],
+        ]);
+
+        $reset = $manager->reset('alpha');
+
+        $this->assertSame($manager->defaults(), $reset);
+        $this->assertSame($manager->defaults(), $manager->load('alpha'));
+        $this->assertTrue($manager->isFirstRun($reset));
+    }
 }

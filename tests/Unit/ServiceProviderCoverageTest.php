@@ -4,6 +4,7 @@ namespace Romansh\LaravelCreemAgent\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
 use Romansh\LaravelCreemAgent\Agent\AgentManager;
+use Romansh\LaravelCreemAgent\Console\HeartbeatResetCommand;
 use Romansh\LaravelCreemAgent\Console\OpenClawTelegramConfigCommand;
 use Romansh\LaravelCreemAgent\CreemAgentServiceProvider;
 
@@ -40,7 +41,8 @@ class ServiceProviderCoverageTest extends TestCase
         $provider->boot();
 
         $this->assertNotEmpty($provider->capturedPublishes);
-        $this->assertCount(7, $provider->capturedCommands);
+        $this->assertCount(8, $provider->capturedCommands);
+        $this->assertContains(HeartbeatResetCommand::class, $provider->capturedCommands);
         $this->assertContains(OpenClawTelegramConfigCommand::class, $provider->capturedCommands);
         $this->assertCount(1, $provider->capturedRoutes);
     }

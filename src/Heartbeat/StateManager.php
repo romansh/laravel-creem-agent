@@ -56,6 +56,14 @@ class StateManager
         rename($tmp, $path);
     }
 
+    public function reset(string $store): array
+    {
+        $defaults = $this->defaults();
+        $this->save($store, $defaults);
+
+        return $defaults;
+    }
+
     public function isFirstRun(array $state): bool
     {
         return $state['lastCheckAt'] === null;
