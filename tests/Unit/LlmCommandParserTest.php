@@ -27,7 +27,7 @@ class LlmCommandParserTest extends TestCase
     {
         parent::setUp();
 
-        if (! class_exists(AiServiceProvider::class) || ! class_exists('Laravel\\Ai\\Promptable')) {
+        if (! class_exists(AiServiceProvider::class) || ! trait_exists('Laravel\\Ai\\Promptable')) {
             $this->markTestSkipped('laravel/ai is not installed in the current vendor directory.');
         }
     }
