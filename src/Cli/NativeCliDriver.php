@@ -8,7 +8,8 @@ class NativeCliDriver implements CliDriverInterface
 {
     public function execute(string $resource, string $action, array $args = [], ?string $profile = null): array
     {
-        $command = ['creem', $resource, $action, '--json'];
+        $binary = getenv('CREEM_CLI_BINARY') ?: 'creem';
+        $command = [$binary, $resource, $action, '--json'];
 
         foreach ($args as $key => $value) {
             if (is_int($key)) {
@@ -23,7 +24,7 @@ class NativeCliDriver implements CliDriverInterface
             }
         }
 
-        $process = new Process($command);
+        $process = $this->createProcess($command);
         $process->setTimeout(30);
         $process->run();
 
@@ -41,5 +42,10 @@ class NativeCliDriver implements CliDriverInterface
         }
 
         return $decoded;
+    }
+
+    protected function createProcess(array $command): Process
+    {
+        return new Process($command);
     }
 }

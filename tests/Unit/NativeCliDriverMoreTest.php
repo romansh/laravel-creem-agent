@@ -4,50 +4,34 @@ namespace Romansh\LaravelCreemAgent\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
 use Romansh\LaravelCreemAgent\Cli\NativeCliDriver;
+use Symfony\Component\Process\Process;
 
 class NativeCliDriverMoreTest extends TestCase
 {
-    private string $tmpDir;
-    private string $originalPath;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->originalPath = getenv('PATH') ?: '';
-
-        $this->tmpDir = sys_get_temp_dir() . '/creem_native_more_' . uniqid();
-        mkdir($this->tmpDir, 0700, true);
-        putenv('PATH=' . $this->tmpDir . PATH_SEPARATOR . getenv('PATH'));
-    }
-
-    protected function tearDown(): void
-    {
-        @unlink($this->tmpDir . '/creem');
-        @rmdir($this->tmpDir);
-        putenv('PATH=' . $this->originalPath);
-        parent::tearDown();
-    }
-
     public function test_execute_supports_boolean_and_positional_arguments()
     {
-        $script = <<<'BASH'
-#!/bin/bash
-echo -n '['
-sep=''
-for a in "$@"; do
-  printf '%s' "$sep"
-  esc=$(printf '%s' "$a" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g')
-  printf '"%s"' "$esc"
-  sep=','
-done
-echo ']'
-BASH;
+        $process = $this->getMockBuilder(Process::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['setTimeout', 'run', 'isSuccessful', 'getOutput'])
+            ->getMock();
 
-        file_put_contents($this->tmpDir . '/creem', $script);
-        chmod($this->tmpDir . '/creem', 0755);
+        $process->expects($this->once())->method('setTimeout')->with(30)->willReturnSelf();
+        $process->expects($this->once())->method('run');
+        $process->expects($this->once())->method('isSuccessful')->willReturn(true);
+        $process->expects($this->once())->method('getOutput')->willReturn('["products","list","--json","--verbose","--limit","5","extra"]');
 
-        $driver = new NativeCliDriver();
+        $driver = new class($process) extends NativeCliDriver {
+            public array $capturedCommand = [];
+
+            public function __construct(private Process $process) {}
+
+            protected function createProcess(array $command): Process
+            {
+                $this->capturedCommand = $command;
+                return $this->process;
+            }
+        };
+
         $result = $driver->execute('products', 'list', ['verbose' => true, 'quiet' => false, 'limit' => 5, 'extra']);
 
         $this->assertContains('--verbose', $result);
@@ -55,16 +39,33 @@ BASH;
         $this->assertContains('--limit', $result);
         $this->assertContains('5', $result);
         $this->assertContains('extra', $result);
+        $this->assertSame(['creem', 'products', 'list', '--json', '--verbose', '--limit', '5', 'extra'], $driver->capturedCommand);
     }
 
     public function test_execute_throws_on_process_failure()
     {
-        file_put_contents($this->tmpDir . '/creem', "#!/bin/bash\necho 'boom' 1>&2\nexit 1\n");
-        chmod($this->tmpDir . '/creem', 0755);
+        $process = $this->getMockBuilder(Process::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['setTimeout', 'run', 'isSuccessful', 'getErrorOutput'])
+            ->getMock();
+
+        $process->method('setTimeout')->willReturnSelf();
+        $process->method('run');
+        $process->method('isSuccessful')->willReturn(false);
+        $process->method('getErrorOutput')->willReturn('boom');
 
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Creem CLI failed');
 
-        (new NativeCliDriver())->execute('products', 'list');
+        $driver = new class($process) extends NativeCliDriver {
+            public function __construct(private Process $process) {}
+
+            protected function createProcess(array $command): Process
+            {
+                return $this->process;
+            }
+        };
+
+        $driver->execute('products', 'list');
     }
 }

@@ -4,54 +4,33 @@ namespace Romansh\LaravelCreemAgent\Tests\Unit;
 
 use Orchestra\Testbench\TestCase;
 use Romansh\LaravelCreemAgent\Cli\NativeCliDriver;
+use Symfony\Component\Process\Process;
 
 class NativeCliDriverTest extends TestCase
 {
-    protected string $tmpDir;
-    protected string $originalPath;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->originalPath = getenv('PATH') ?: '';
-
-        $this->tmpDir = sys_get_temp_dir() . '/creem_test_' . uniqid();
-        mkdir($this->tmpDir, 0700, true);
-
-        $script = <<<'BASH'
-    #!/bin/bash
-    # Return JSON-encoded argv (without script name) using pure shell
-    echo -n '['
-    sep=''
-    for a in "$@"; do
-      printf '%s' "$sep"
-      # escape backslashes and double quotes
-      esc=$(printf '%s' "$a" | sed -e 's/\\/\\\\/g' -e 's/"/\\\"/g' -e ':a;N;s/\n/\\n/;ta')
-      printf '"%s"' "$esc"
-      sep=','
-    done
-    echo ']'
-    BASH;
-
-        file_put_contents($this->tmpDir . '/creem', $script);
-        chmod($this->tmpDir . '/creem', 0755);
-
-        // Prepend our temp dir to PATH so Process finds the script
-        putenv('PATH=' . $this->tmpDir . PATH_SEPARATOR . getenv('PATH'));
-    }
-
-    protected function tearDown(): void
-    {
-        @unlink($this->tmpDir . '/creem');
-        @rmdir($this->tmpDir);
-        putenv('PATH=' . $this->originalPath);
-        parent::tearDown();
-    }
-
     public function test_execute_returns_decoded_json()
     {
-        $d = new NativeCliDriver();
+        $process = $this->getMockBuilder(Process::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['setTimeout', 'run', 'isSuccessful', 'getOutput'])
+            ->getMock();
+
+        $process->expects($this->once())->method('setTimeout')->with(30)->willReturnSelf();
+        $process->expects($this->once())->method('run');
+        $process->expects($this->once())->method('isSuccessful')->willReturn(true);
+        $process->expects($this->once())->method('getOutput')->willReturn('["transactions","get","--json","--id","tx_1"]');
+
+        $d = new class($process) extends NativeCliDriver {
+            public array $capturedCommand = [];
+
+            public function __construct(private Process $process) {}
+
+            protected function createProcess(array $command): Process
+            {
+                $this->capturedCommand = $command;
+                return $this->process;
+            }
+        };
 
         $res = $d->execute('transactions', 'get', ['id' => 'tx_1']);
 
@@ -60,17 +39,32 @@ class NativeCliDriverTest extends TestCase
         $this->assertContains('get', $res);
         $this->assertContains('--id', $res);
         $this->assertContains('tx_1', $res);
+        $this->assertSame(['creem', 'transactions', 'get', '--json', '--id', 'tx_1'], $d->capturedCommand);
     }
 
     public function test_invalid_json_throws()
     {
-        // Overwrite script to emit invalid JSON
-        file_put_contents($this->tmpDir . '/creem', "#!/bin/bash\necho 'not-json'\n");
-        chmod($this->tmpDir . '/creem', 0755);
+        $process = $this->getMockBuilder(Process::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['setTimeout', 'run', 'isSuccessful', 'getOutput'])
+            ->getMock();
+
+        $process->method('setTimeout')->willReturnSelf();
+        $process->method('run');
+        $process->method('isSuccessful')->willReturn(true);
+        $process->method('getOutput')->willReturn('not-json');
 
         $this->expectException(\RuntimeException::class);
 
-        $d = new NativeCliDriver();
+        $d = new class($process) extends NativeCliDriver {
+            public function __construct(private Process $process) {}
+
+            protected function createProcess(array $command): Process
+            {
+                return $this->process;
+            }
+        };
+
         $d->execute('products', 'list', []);
     }
 }
