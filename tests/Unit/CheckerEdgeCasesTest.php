@@ -76,6 +76,37 @@ class CheckerEdgeCasesTest extends TestCase
         $this->assertSame(0, $result['counts']['active']);
     }
 
+    public function test_subscription_checker_keeps_known_status_on_partial_fetch_failure()
+    {
+        $previous = [
+            'subscriptions' => ['active' => 1, 'past_due' => 0],
+            'knownSubscriptions' => ['sub_active' => 'active'],
+        ];
+
+        $proxy = $this->getMockBuilder(\Romansh\LaravelCreemAgent\Cli\Proxies\SubscriptionProxy::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['listByStatus'])
+            ->getMock();
+
+        $proxy->method('listByStatus')->willReturnCallback(function ($status) {
+            return match ($status) {
+                'active' => throw new \RuntimeException('active fetch failed'),
+                default => [],
+            };
+        });
+
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->onlyMethods(['subscriptions'])
+            ->disableOriginalConstructor()
+            ->getMock();
+        $cli->method('subscriptions')->willReturn($proxy);
+
+        $result = (new SubscriptionChecker($cli))->check($previous);
+
+        $this->assertSame(['sub_active' => 'active'], $result['knownSubscriptions']);
+        $this->assertSame([], $result['transitions']);
+    }
+
     public function test_transaction_checker_covers_exception_unchanged_and_fallback_mapping()
     {
         $cli = $this->getMockBuilder(CreemCliManager::class)
@@ -212,5 +243,28 @@ class CheckerEdgeCasesTest extends TestCase
         ]);
 
         $this->assertSame(9, $result['totalCount']);
+    }
+
+    public function test_customer_checker_handles_malformed_payload_without_crashing()
+    {
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->onlyMethods(['customers'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $proxy = $this->getMockBuilder(\Romansh\LaravelCreemAgent\Cli\Proxies\CustomerProxy::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['list'])
+            ->getMock();
+
+        $proxy->method('list')->willReturn(['items' => 'not-an-array']);
+        $cli->method('customers')->willReturn($proxy);
+
+        $result = (new \Romansh\LaravelCreemAgent\Heartbeat\CustomerChecker($cli))->check([
+            'customerCount' => 6,
+        ]);
+
+        $this->assertSame(6, $result['totalCount']);
+        $this->assertSame(0, $result['newCount']);
     }
 }

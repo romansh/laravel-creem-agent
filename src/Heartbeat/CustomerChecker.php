@@ -11,12 +11,19 @@ class CustomerChecker
 
     public function check(array $previousState, ?string $store = null): array
     {
+        $total = $previousState['customerCount'] ?? 0;
+
         try {
             $result = $this->cli->customers()->list(1, $store);
-            $total = $result['total'] ?? count($result['items'] ?? $result['data'] ?? $result);
-        } catch (\Exception $e) {
+            $items = $result['items'] ?? $result['data'] ?? [];
+
+            if (is_array($result)) {
+                $total = $result['pagination']['total_records']
+                    ?? $result['total']
+                    ?? (is_array($items) ? count($items) : $total);
+            }
+        } catch (\Throwable $e) {
             Log::warning('[CreemAgent] Failed to fetch customers', ['error' => $e->getMessage()]);
-            $total = $previousState['customerCount'] ?? 0;
         }
 
         $newCustomers = max(0, $total - ($previousState['customerCount'] ?? 0));

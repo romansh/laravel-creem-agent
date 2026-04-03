@@ -13,7 +13,7 @@ class TransactionChecker
     {
         try {
             $transactions = $this->cli->transactions()->list([], 1, 20, $store);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::warning('[CreemAgent] Failed to fetch transactions', ['error' => $e->getMessage()]);
             return [
                 'newTransactions' => [],

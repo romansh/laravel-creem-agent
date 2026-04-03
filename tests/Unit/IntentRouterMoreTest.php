@@ -106,4 +106,56 @@ class IntentRouterMoreTest extends TestCase
         $res2 = $router2->route(['intent' => 'cancel_subscription', 'id' => 'sub_1']);
         $this->assertStringContainsString('Failed to cancel', $res2);
     }
+
+    public function test_query_customers_handles_malformed_payload_gracefully()
+    {
+        $customers = $this->getMockBuilder(\Romansh\LaravelCreemAgent\Cli\Proxies\CustomerProxy::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['list'])
+            ->getMock();
+
+        $customers->method('list')->willReturn(['items' => 'broken']);
+
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->onlyMethods(['customers', 'getActiveStore'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $cli->method('customers')->willReturn($customers);
+        $cli->method('getActiveStore')->willReturn('default');
+
+        $router = new IntentRouter($cli);
+        $res = $router->route(['intent' => 'query_customers']);
+
+        $this->assertStringContainsString('0 customer(s)', $res);
+    }
+
+    public function test_query_transactions_and_products_ignore_non_array_items()
+    {
+        $transactions = $this->getMockBuilder(\Romansh\LaravelCreemAgent\Cli\Proxies\TransactionProxy::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['list'])
+            ->getMock();
+        $transactions->method('list')->willReturn(['items' => 'broken']);
+
+        $products = $this->getMockBuilder(\Romansh\LaravelCreemAgent\Cli\Proxies\ProductProxy::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['list'])
+            ->getMock();
+        $products->method('list')->willReturn(['items' => 'broken']);
+
+        $cli = $this->getMockBuilder(CreemCliManager::class)
+            ->onlyMethods(['transactions', 'products', 'getActiveStore'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $cli->method('transactions')->willReturn($transactions);
+        $cli->method('products')->willReturn($products);
+        $cli->method('getActiveStore')->willReturn('default');
+
+        $router = new IntentRouter($cli);
+
+        $this->assertSame('No transactions found.', $router->route(['intent' => 'query_transactions']));
+        $this->assertSame('No products found.', $router->route(['intent' => 'query_products']));
+    }
 }

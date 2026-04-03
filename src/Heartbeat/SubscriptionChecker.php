@@ -15,6 +15,7 @@ class SubscriptionChecker
     {
         $counts = [];
         $allSubscriptions = [];
+        $knownPrevious = $previousState['knownSubscriptions'] ?? [];
 
         foreach (self::STATUSES as $status) {
             try {
@@ -33,15 +34,20 @@ class SubscriptionChecker
                         $allSubscriptions[$subId] = $status;
                     }
                 }
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 Log::warning("[CreemAgent] Failed to fetch {$status} subscriptions", ['error' => $e->getMessage()]);
                 $counts[$status] = $previousState['subscriptions'][$status] ?? 0;
+
+                foreach ($knownPrevious as $subId => $previousStatus) {
+                    if ($previousStatus === $status) {
+                        $allSubscriptions[$subId] = $status;
+                    }
+                }
             }
         }
 
         // Detect transitions
         $transitions = [];
-        $knownPrevious = $previousState['knownSubscriptions'] ?? [];
 
         foreach ($allSubscriptions as $subId => $currentStatus) {
             $previousStatus = $knownPrevious[$subId] ?? null;

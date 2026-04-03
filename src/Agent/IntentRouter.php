@@ -56,7 +56,7 @@ class IntentRouter
 
             $store = $this->cli->getActiveStore();
             return "You have {$count} {$status} subscription(s) in store '{$store}'.";
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Error querying subscriptions: {$e->getMessage()}";
         }
     }
@@ -65,9 +65,12 @@ class IntentRouter
     {
         try {
             $result = $this->cli->customers()->list(1);
-            $total = $result['total'] ?? count($result['items'] ?? $result['data'] ?? $result);
+            $items = $result['items'] ?? $result['data'] ?? [];
+            $total = is_array($result)
+                ? ($result['pagination']['total_records'] ?? $result['total'] ?? (is_array($items) ? count($items) : 0))
+                : 0;
             return "You have {$total} customer(s) in store '{$this->cli->getActiveStore()}'.";
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Error querying customers: {$e->getMessage()}";
         }
     }
@@ -78,7 +81,7 @@ class IntentRouter
             $result = $this->cli->transactions()->list([], 1, 5);
             $items = $result['items'] ?? $result['data'] ?? $result;
 
-            if (empty($items)) {
+            if (!is_array($items) || empty($items)) {
                 return "No transactions found.";
             }
 
@@ -90,7 +93,7 @@ class IntentRouter
                 $lines[] = "  • \${$amount} {$currency} — {$product}";
             }
             return implode("\n", $lines);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Error querying transactions: {$e->getMessage()}";
         }
     }
@@ -101,7 +104,7 @@ class IntentRouter
             $result = $this->cli->products()->list(20);
             $items = $result['items'] ?? $result['data'] ?? $result;
 
-            if (empty($items)) {
+            if (!is_array($items) || empty($items)) {
                 return "No products found.";
             }
 
@@ -112,7 +115,7 @@ class IntentRouter
                 $lines[] = "  • {$name} (\${$price})";
             }
             return implode("\n", $lines);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Error querying products: {$e->getMessage()}";
         }
     }
@@ -156,7 +159,7 @@ class IntentRouter
 
             $messages = array_map(fn($c) => "  • {$c['message']}", $result['changes']);
             return "Heartbeat complete — {$count} change(s):\n" . implode("\n", $messages);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Heartbeat failed: {$e->getMessage()}";
         }
     }
@@ -166,7 +169,7 @@ class IntentRouter
         try {
             $this->cli->subscriptions()->cancel($intent['id'], true);
             return "Subscription {$intent['id']} scheduled for cancellation at period end.";
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Failed to cancel: {$e->getMessage()}";
         }
     }
@@ -177,7 +180,7 @@ class IntentRouter
             $result = $this->cli->execute('checkouts', 'create', ['product_id' => $intent['product_id']]);
             $url = $result['checkout_url'] ?? 'N/A';
             return "Checkout created: {$url}";
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return "Failed to create checkout: {$e->getMessage()}";
         }
     }
