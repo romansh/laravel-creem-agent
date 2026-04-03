@@ -12,10 +12,24 @@ class LlmCommandParserTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
-        return [
-            AiServiceProvider::class,
+        $providers = [
             CreemAgentServiceProvider::class,
         ];
+
+        if (class_exists(AiServiceProvider::class)) {
+            array_unshift($providers, AiServiceProvider::class);
+        }
+
+        return $providers;
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        if (! class_exists(AiServiceProvider::class) || ! class_exists('Laravel\\Ai\\Promptable')) {
+            $this->markTestSkipped('laravel/ai is not installed in the current vendor directory.');
+        }
     }
 
     public function test_it_parses_llm_json_response()
