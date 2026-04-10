@@ -228,6 +228,53 @@ class ArtisanCliDriverTest extends TestCase
         $this->assertEquals(['id' => 'disc_1'], $discount);
     }
 
+    public function test_checkout_create_preserves_regional_pricing_fields_through_agent_proxy(): void
+    {
+        Http::fake(function ($request) {
+            if (str_contains($request->url(), '/checkouts') && $request->method() === 'POST') {
+                $data = $request->data();
+
+                return Http::response([
+                    'checkout_id' => 'chk_fx_1',
+                    'price_id' => $data['price_id'] ?? null,
+                    'currency' => $data['currency'] ?? null,
+                    'amount' => $data['amount'] ?? null,
+                    'payment_method_id' => $data['payment_method_id'] ?? null,
+                    'off_session' => $data['off_session'] ?? null,
+                ], 200);
+            }
+
+            return Http::response([], 200);
+        });
+
+        $driver = new ArtisanCliDriver();
+
+        $result = $driver->execute('checkouts', 'create', [
+            'price_id' => 'price_inr_monthly',
+            'currency' => 'INR',
+            'amount' => 49900,
+            'payment_method_id' => 'pm_saved_123',
+            'off_session' => true,
+        ]);
+
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return str_contains($request->url(), '/checkouts')
+                && $request->method() === 'POST'
+                && ($data['price_id'] ?? null) === 'price_inr_monthly'
+                && ($data['currency'] ?? null) === 'INR'
+                && ($data['amount'] ?? null) === 49900
+                && ($data['payment_method_id'] ?? null) === 'pm_saved_123'
+                && ($data['off_session'] ?? null) === true;
+        });
+
+        $this->assertSame('price_inr_monthly', $result['price_id']);
+        $this->assertSame('INR', $result['currency']);
+        $this->assertSame(49900, $result['amount']);
+        $this->assertTrue($result['off_session']);
+    }
+
     public function test_unknown_resource_and_action_throw()
     {
         $driver = new ArtisanCliDriver();
